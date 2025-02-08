@@ -1,6 +1,7 @@
 extends UpgradeButton
 
 func _init():
+	index = 0
 	upgrades = [[10, "Passer a Notepad++"]]
 	maxed_text = "Tu es editormaxxed"
 	visible_condition = func(): return true
