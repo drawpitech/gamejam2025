@@ -1,13 +1,17 @@
 extends Button
 
-var nb: int
+const texts = [
+	"chore: fix typo in previous commit",
+	"refactor: modify type of id from Integer to Decimal",
+	"[ADD] fix bug",
+	"perf: remove logs because it make program laggy"
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.nb = 0
+	self.text = texts[randi_range(0, texts.size() - 1)]
+	pass
 
 func _pressed():
-	self.nb += 1
-	self.text = "Tu as cliqué %d fois" % self.nb
-	if (self.nb == 100):
-		get_tree().quit(0)
+	self.text = texts[randi_range(0, texts.size() - 1)]
+	Globals.add_commits(1)

@@ -1,30 +1,93 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq64ps35rc2qx"]
+[gd_scene load_steps=8 format=3 uid="uid://cq64ps35rc2qx"]
 
+[ext_resource type="Script" path="res://score_label.gd" id="1_1wdov"]
 [ext_resource type="Script" path="res://button.gd" id="1_qyb3j"]
+[ext_resource type="Script" path="res://autocomplete_upgrade.gd" id="3_dp4y8"]
+[ext_resource type="Script" path="res://editor_upgrade.gd" id="3_soynt"]
+[ext_resource type="Script" path="res://feature_upgrade.gd" id="4_sf3r6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyb5r"]
+
+[sub_resource type="GDScript" id="GDScript_j5ros"]
+script/source = "extends VBoxContainer
+
+func _ready():
+	self.visible = false
+
+func _process(delta):
+	if Globals.total_commits < 10:
+		self.visible = false
+		return
+	else: 
+		self.visible = true
+		
+"
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -29.0
+offset_right = 125.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Zebi"
+text = "Travail"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Zebi"
+text = "Illusions :"
+label_settings = SubResource("LabelSettings_fyb5r")
+horizontal_alignment = 1
+script = ExtResource("1_1wdov")
+
+[node name="ClickButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fix une typo  dans la codebase"
 script = ExtResource("1_qyb3j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = SubResource("GDScript_j5ros")
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Upgrades"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EditorUpgrade" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Améliorer IDE"
+script = ExtResource("3_soynt")
+
+[node name="FeatureUpgrade" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Améliorer features"
+script = ExtResource("4_sf3r6")
+
+[node name="AutoCompleteUpgrade" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Améliorer autocomplete"
+script = ExtResource("3_dp4y8")
