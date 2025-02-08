@@ -15,3 +15,5 @@ func _ready():
 func _pressed():
 	self.text = texts[randi_range(0, texts.size() - 1)]
 	Globals.add_commits(1)
+	if randi() % 12 == 0:
+		get_tree().change_scene_to_file("res://Scenes/Levels/Level_01.tscn")
