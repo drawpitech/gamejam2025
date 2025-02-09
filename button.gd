@@ -19,5 +19,5 @@ func _pressed():
 	if (nb_commit > 0):
 		Globals.add_commits(nb_commit)
 	commit_completion -= nb_commit
-	if randi() % 12 == 0:
+	if randi() % 40 == 0:
 		get_tree().change_scene_to_file("res://Scenes/Levels/Level_01.tscn")
