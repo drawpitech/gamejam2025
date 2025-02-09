@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://autocomplete_upgrade.gd" id="3_dp4y8"]
 [ext_resource type="Script" path="res://editor_upgrade.gd" id="3_soynt"]
 [ext_resource type="Script" path="res://feature_upgrade.gd" id="4_sf3r6"]
-[ext_resource type="Script" path="res://upgrade_button.gd" id="6_ltspv"]
+[ext_resource type="Script" path="res://zbi.gd" id="6_pym4o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyb5r"]
 
@@ -112,4 +112,4 @@ script = ExtResource("3_dp4y8")
 
 [node name="UpgradeButton" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("6_ltspv")
+script = ExtResource("6_pym4o")

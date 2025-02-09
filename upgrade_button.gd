@@ -13,6 +13,7 @@ var index: int
 
 func _ready():
 	visible = default_visible
+	focus_mode = Control.FOCUS_NONE
 
 
 func _process(_delta):
