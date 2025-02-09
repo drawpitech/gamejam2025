@@ -9,7 +9,7 @@ func format_si(nb: float) -> String:
 		if nb >  1000 ** (e+1):
 			div = 1000 ** (e+1)
 			suffix = suffixes[e]
-	return "%d%s" % [(nb / div), suffix]
+	return "%d%s" % [nb, suffix] #"%d%s" % [(nb / div), suffix]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
