@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq64ps35rc2qx"]
+[gd_scene load_steps=9 format=3 uid="uid://cq64ps35rc2qx"]
 
 [ext_resource type="Script" path="res://score_label.gd" id="1_1wdov"]
 [ext_resource type="Script" path="res://button.gd" id="1_qyb3j"]
 [ext_resource type="Script" path="res://autocomplete_upgrade.gd" id="3_dp4y8"]
 [ext_resource type="Script" path="res://editor_upgrade.gd" id="3_soynt"]
 [ext_resource type="Script" path="res://feature_upgrade.gd" id="4_sf3r6"]
+[ext_resource type="Script" path="res://upgrade_button.gd" id="6_ltspv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyb5r"]
 
@@ -25,45 +26,61 @@ func _process(delta):
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -29.0
-offset_right = 125.0
-offset_bottom = 29.0
+offset_left = -98.5
+offset_top = 32.0
+offset_right = 98.5
+offset_bottom = 249.0
 grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Travail"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Illusions :"
 label_settings = SubResource("LabelSettings_fyb5r")
 horizontal_alignment = 1
 script = ExtResource("1_1wdov")
 
 [node name="ClickButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
-text = "Fix une typo  dans la codebase"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "CODER"
 script = ExtResource("1_qyb3j")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ClickButton"]
+position = Vector2(40, 20)
+emitting = false
+amount = 100
+lifetime = 0.2
+one_shot = true
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(40, 20)
+direction = Vector2(0, -1)
+spread = 90.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angle_max = 90.0
+scale_amount_max = 4.0
+color = Color(1, 0.882353, 0.439216, 0.709804)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -79,6 +96,7 @@ layout_mode = 2
 
 [node name="EditorUpgrade" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Améliorer IDE"
 script = ExtResource("3_soynt")
 
@@ -91,3 +109,7 @@ script = ExtResource("4_sf3r6")
 layout_mode = 2
 text = "Améliorer autocomplete"
 script = ExtResource("3_dp4y8")
+
+[node name="UpgradeButton" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("6_ltspv")

@@ -7,11 +7,15 @@ const texts = [
 	"perf: remove logs because it make program laggy"
 ]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	self.text = texts[randi_range(0, texts.size() - 1)]
-	pass
+var commit_completion: float = 0;
+
+func _process(_d):
+	if button_pressed:
+		$CPUParticles2D.emitting = true
 
 func _pressed():
-	self.text = texts[randi_range(0, texts.size() - 1)]
-	Globals.add_commits(1)
+	commit_completion += 0.1
+	var nb_commit = roundi(commit_completion)
+	if (nb_commit > 0):
+		Globals.add_commits(nb_commit)
+	commit_completion -= nb_commit
