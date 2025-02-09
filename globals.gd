@@ -13,7 +13,6 @@ var actual_state: Array
 func add_commits(nb: int):
 	if nb == 0:
 		return
-	nb = 100
 	if nb:
 		self.first_commit = true
 	self.commits += nb
