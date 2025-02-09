@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 	last_call += delta
 	if last_call < 5:
 		return
+	if last_commit_count != 0 and last_commit_count == Globals.total_commits:
+		get_tree().quit(0)
 	last_call = 0
 	var diff = Globals.total_commits - last_commit_count
 	last_commit_count = Globals.total_commits

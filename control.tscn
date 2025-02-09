@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq64ps35rc2qx"]
+[gd_scene load_steps=12 format=3 uid="uid://cq64ps35rc2qx"]
 
 [ext_resource type="Script" path="res://score_label.gd" id="1_1wdov"]
 [ext_resource type="Script" path="res://sus_.gd" id="1_ggxs1"]
