@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq64ps35rc2qx"]
+[gd_scene load_steps=11 format=3 uid="uid://cq64ps35rc2qx"]
 
 [ext_resource type="Script" path="res://score_label.gd" id="1_1wdov"]
 [ext_resource type="Script" path="res://button.gd" id="1_qyb3j"]
 [ext_resource type="Script" path="res://autocomplete_upgrade.gd" id="3_dp4y8"]
 [ext_resource type="Script" path="res://editor_upgrade.gd" id="3_soynt"]
 [ext_resource type="Script" path="res://feature_upgrade.gd" id="4_sf3r6"]
+[ext_resource type="Script" path="res://zbi.gd" id="6_06nub"]
 [ext_resource type="Script" path="res://commit_container.gd" id="6_bj2ra"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyb5r"]
@@ -21,7 +22,6 @@ func _process(delta):
 		return
 	else:
 		self.visible = true
-
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_7moe5"]
@@ -114,6 +114,10 @@ layout_mode = 2
 text = "Améliorer autocomplete"
 script = ExtResource("3_dp4y8")
 
+[node name="DevinButton" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("6_06nub")
+
 [node name="CommitLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = -569.0
@@ -125,7 +129,7 @@ label_settings = SubResource("LabelSettings_7moe5")
 
 [node name="CommitLog" type="ScrollContainer" parent="."]
 layout_mode = 2
-offset_left = -565.0
+offset_left = -567.0
 offset_top = 375.0
 offset_right = 569.0
 offset_bottom = 644.0
@@ -135,5 +139,4 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 script = ExtResource("6_bj2ra")
 
-[connection signal="on_commit" from="VBoxContainer/ClickButton" to="CommitLog/CommitContainer" method="_on_click_button_on_commit"]
 [connection signal="pressed" from="VBoxContainer/ClickButton" to="CommitLog/CommitContainer" method="_on_click_button_pressed"]

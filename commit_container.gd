@@ -3,7 +3,7 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Globals.connect("on_commit", _on_commit)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +37,7 @@ const commits = [
 	"security: obfuscate variables names",
 ]
 
-func _on_click_button_on_commit() -> void:
+func _on_commit() -> void:
 	var label = Label.new()
 	label.text = commits.pick_random()
 	add_child(label)

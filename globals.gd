@@ -1,5 +1,7 @@
 extends Node
 
+signal on_commit
+
 var first_commit: bool
 var total_commits: int
 var commits: int
@@ -7,6 +9,7 @@ var editor: int
 var features: int
 var ia: int
 var autocomplete: int
+var ia_commits: float
 var __couisine_counter: float
 var actual_state: Array
 
@@ -17,6 +20,8 @@ func add_commits(nb: int):
 		self.first_commit = true
 	self.commits += nb
 	self.total_commits += nb
+	for i in range(nb):
+		on_commit.emit()
 	# if randi() % 3 == 0:
 	# 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_01.tscn")
 	
@@ -33,7 +38,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if self.ia > 0:
-		self.add_commits(500 * self.ia * delta)
+		ia_commits += 10. * self.ia * delta
+		var nb_commit = roundi(ia_commits)
+		if (nb_commit > 0):
+			add_commits(nb_commit)
+		ia_commits -= nb_commit
 	self.__couisine_counter += (editor / 10.) * delta;
 	self.add_commits(roundi(self.__couisine_counter));
 	self.__couisine_counter -= roundi(self.__couisine_counter) 
