@@ -22,7 +22,7 @@ func add_commits(nb: int):
 	self.total_commits += nb
 	for i in range(nb):
 		on_commit.emit()
-	if randi() % 4 == 0 and not self.ia:
+	if randi() % 20 == 0 and not self.ia:
 		get_tree().change_scene_to_file("res://Scenes/Levels/Level_01.tscn")
 	
 # Called when the node enters the scene tree for the first time.
