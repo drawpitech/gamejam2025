@@ -9,8 +9,7 @@ var maxed_text: String = "Button maxed"
 var currency: Callable = func(): return Globals.commits
 var remove_currency: Callable = func(x: int): Globals.commits -= x
 var on_pressed: Callable
-
-var __actual_state = 0
+var index: int
 
 func _ready():
 	visible = default_visible
@@ -22,18 +21,18 @@ func _process(_delta):
 		return
 	else:
 		visible = true
-	if __actual_state >= upgrades.size():
+	if Globals.actual_state[index] >= upgrades.size():
 		text = maxed_text
 		disabled = true
 		return
-	var needed = upgrades[__actual_state][0]
-	text = "%s %d" % [upgrades[__actual_state][1], needed]
-	if upgrades[__actual_state][0] > currency.call():
+	var needed = upgrades[Globals.actual_state[index]][0]
+	text = "%s %d" % [upgrades[Globals.actual_state[index]][1], needed]
+	if upgrades[Globals.actual_state[index]][0] > currency.call():
 		disabled = true
 	else:
 		disabled = false
 	
 func _pressed():
-	remove_currency.call(upgrades[__actual_state][0])
+	remove_currency.call(upgrades[Globals.actual_state[index]][0])
 	on_pressed.call()
-	__actual_state += 1
+	Globals.actual_state[index] += 1

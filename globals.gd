@@ -7,7 +7,7 @@ var editor: int
 var features: int
 var autocomplete: int
 var __couisine_counter: float
-
+var actual_state: Array
 
 func add_commits(nb: int):
 	if nb:
@@ -22,6 +22,7 @@ func _ready():
 	self.editor = 0
 	self.features = 0
 	self.autocomplete = 0
+	self.actual_state = [0, 0, 0]
 	self.__couisine_counter = 0.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
