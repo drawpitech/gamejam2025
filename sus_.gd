@@ -7,6 +7,7 @@ func _ready() -> void:
 
 var last_call = 0
 var last_commit_count = 0
+var fired = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,7 +15,12 @@ func _process(delta: float) -> void:
 	if last_call < 5:
 		return
 	if last_commit_count != 0 and last_commit_count == Globals.total_commits:
+		fired += 1
+	else:
+		fired = 0
+	if fired >= 3:
 		get_tree().quit(0)
+	
 	last_call = 0
 	var diff = Globals.total_commits - last_commit_count
 	last_commit_count = Globals.total_commits
