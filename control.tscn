@@ -1,6 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cq64ps35rc2qx"]
 
 [ext_resource type="Script" path="res://score_label.gd" id="1_1wdov"]
+[ext_resource type="Script" path="res://sus_.gd" id="1_ggxs1"]
 [ext_resource type="Script" path="res://button.gd" id="1_qyb3j"]
 [ext_resource type="Script" path="res://autocomplete_upgrade.gd" id="3_dp4y8"]
 [ext_resource type="Script" path="res://editor_upgrade.gd" id="3_soynt"]
@@ -45,6 +46,11 @@ offset_top = 32.0
 offset_right = 98.5
 offset_bottom = 249.0
 grow_horizontal = 2
+
+[node name="sus_" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Your boss want to fire you: 100 %"
+script = ExtResource("1_ggxs1")
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
